@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="expires" content="-1" />
+		<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+		<title>Mầm MiniMart</title>
+		<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<body>
+		$(if chap-id)
+			<form name="sendin" action="$(link-login-only)" method="post">
+				<input type="hidden" name="username" />
+				<input type="hidden" name="password" />
+				<input type="hidden" name="dst" value="$(link-orig)" />
+				<input type="hidden" name="popup" value="true" />
+			</form>
+
+			<script type="text/javascript" src="md5.js"></script>
+			<script type="text/javascript">
+			<!--
+				function doLogin() {
+				document.sendin.username.value = document.login.username.value;
+				document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+				document.sendin.submit();
+				return false;
+				}
+			//-->
+			</script>
+		$(endif)
+		<div class="container">
+			<div class="row">
+				<div class="col-md-offset-2 col-md-4">
+					
+				</div>
+                <div class="col-md-4">
+                    <div class="panel-second"></div>
+                    <div class="panel">
+                        <div class="pull-right"><img src="img/icon-plus.png" /></div>
+                        <header>
+                            login
+                        </header>
+                        <form class="login" name="login" action="$(link-login-only)" method="post"
+                            $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                            <input type="hidden" name="dst" value="$(link-orig)" />
+                            <input type="hidden" name="popup" value="true" />
+                            <div class="s-login">
+	                            
+	                            <p class="text-uppercase"><small>Đăng nhập wifi miễn phí đi, năn nỉ đóooooooo@@ <br><b>Chi tiết liên hệ Mr Sơn 20cm</b> </br>
+	                            
+	                            <hr/>
+	                            
+                                $(if error)
+                                <div class="alert alert-danger">
+                                  <strong>Error!</strong> $(error).
+                                </div>
+                                $(endif)
+                                <input type="text" name="username" class="username" value="$(username)" placeholder="Username" />
+                                <input type="password" name="password" class="password" placeholder="Password"/>
+
+
+                            </div>
+                            <button type="submit" class="btn-login text-space">Truy cập</button>
+
+                            $(if trial == 'yes')
+														<a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="btn btn-logout text-space">COBA GRATIS</a>
+                            $(endif)
+                        </form>
+                    </div>
+                </div>
+			</div>
+		</div>
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+		  	document.login.username.focus();
+		</script>
+
+	</body>
+</html>
